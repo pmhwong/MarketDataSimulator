@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+        <RandomAccessFile name="RandomAccessFile" fileName="MarketDataSimulator.log"
+                          immediateFlush="false" append="false">
+            <PatternLayout>
+                <Pattern>%d{ABSOLUTE_NANOS} %p %m %ex%n</Pattern>
+                <!--Pattern>%d{ABSOLUTE_NANOS} %p [%t] %location %m %ex%n</Pattern-->
+            </PatternLayout>
+        </RandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <!-- pattern layout actually uses location, so we need to include it -->
+        <!--
+        <AsyncLogger name="org.philip" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        -->
+        <Root level="info" includeLocation="false">
+            <AppenderRef ref="RandomAccessFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
